@@ -1,0 +1,39 @@
+{
+  "common": {
+    "newSubscription": "New email"
+  },
+  "subscriptions": {
+    "title": "Emails",
+    "detail": {
+      "blockTitleSubscriptionDetails": "Email details",
+      "subscriptionId": "Email ID",
+      "title": "Email",
+      "self": "this",
+      "ownerSubscriptionId": "Owner or parent",
+      "noRelatedSubscriptions": "No related emails found",
+      "hideTerminatedRelatedSubscriptions": "Hide terminated emails",
+      "tabs": {
+        "general": "General",
+        "serviceConfiguration": "Details",
+        "workflows": "Workflows",
+        "relatedSubscriptions": "Related emails"
+      }
+    }
+  },
+  "processes": {
+    "detail": {
+      "relatedSubscriptions": "Related emails",
+      "subscriptions": "{count, plural, =0 {0 emails} =1 {1 email} other {# subscriptions}}"
+    },
+    "delta": {
+      "title": "Email delta"
+    },
+    "steps": {
+      "workflowSteps": "Workflow steps",
+      "showDelta": "Show email delta",
+      "hideDelta": "Hide email delta",
+      "submitTaskFormLabel": "Please submit the form to start this task",
+      "submitWorkflowFormLabel": "Please submit the form to start this workflow"
+    }
+  }
+}

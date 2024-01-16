@@ -10,7 +10,7 @@ import App, { AppContext, AppInitialProps, AppProps } from 'next/app';
 import Head from 'next/head';
 import { QueryParamProvider } from 'use-query-params';
 
-import {EuiProvider, EuiSideNavItemType, EuiThemeColorMode} from '@elastic/eui';
+import {EuiProvider, EuiThemeColorMode} from '@elastic/eui';
 import {
     ApiClientContextProvider,
     ConfirmationDialogContextWrapper,
@@ -26,8 +26,6 @@ import { getAppLogo } from '@/components/AppLogo/AppLogo';
 import { getInitialOrchestratorConfig } from '@/configuration';
 import { TranslationsProvider } from '@/translations/translationsProvider';
 import {defaultOrchestratorTheme} from "@/theme/defaultOrchestratorTheme";
-import {PATH_SUBSCRIPTIONS} from "@/formatics/constants";
-import {useRouter} from "next/router";
 
 type AppOwnProps = { orchestratorConfig: OrchestratorConfig };
 
@@ -46,7 +44,6 @@ function CustomApp({
     pageProps,
     orchestratorConfig,
 }: AppProps & AppOwnProps) {
-    const router = useRouter();
     const [queryClient] = useState(() => new QueryClient(queryClientConfig));
     const [themeMode, setThemeMode] = useState<EuiThemeColorMode>('light');
 

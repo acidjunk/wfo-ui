@@ -1,47 +1,32 @@
 {
-    "name": "wfo-ui-formatics",
-    "version": "1.0.0",
     "private": true,
     "scripts": {
-        "dev": "next dev -p 3003",
-        "test": "jest --passWithNoTests",
-        "tsc": "tsc --noEmit",
-        "build": "next build",
-        "start": "next start",
-        "lint": "next lint",
+        "dev": "turbo run dev --filter=wfo-ui...",
+        "dev:surf": "turbo run dev --filter=wfo-ui-surf...",
+        "dev:all": "turbo run dev",
+        "test": "turbo run test",
+        "tsc": "turbo run tsc",
+        "lint": "turbo run lint",
+        "prettier": "prettier -c \"{**/*,*}.{ts,tsx,json,js,md}\"",
+        "prettier-fix": "prettier --write \"{**/*,*}.{ts,tsx,json,js,md}\"",
+        "build": "turbo run build",
+        "packages:changeset": "changeset",
+        "packages:publish": "turbo run build lint test && changeset publish",
+        "prepare": "husky install && turbo run build --filter=./packages/*",
         "reset": "rm -rf node_modules"
     },
-    "dependencies": {
-        "@elastic/datemath": "^5.0.3",
-        "@elastic/eui": "91.2.0",
-        "@emotion/css": "^11.11.2",
-        "@emotion/react": "^11.11.1",
-        "@graphql-typed-document-node/core": "3.2.0",
-        "@orchestrator-ui/orchestrator-ui-components": "*",
-        "graphql": "^16.8.1",
-        "graphql-request": "^6.1.0",
-        "moment": "^2.29.4",
-        "next": "^14.0.4",
-        "next-auth": "^4.23.1",
-        "next-intl": "^3.3.1",
-        "next-query-params": "^5.0.0",
-        "process": "0.11.10",
-        "prop-types": "^15.8.1",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-no-ssr": "1.1.0",
-        "react-query": "3.39.3",
-        "typescript": "^5.3.2",
-        "use-query-params": "2.2.1"
-    },
     "devDependencies": {
-        "@orchestrator-ui/eslint-config-custom": "*",
-        "@orchestrator-ui/jest-config": "*",
-        "@orchestrator-ui/tsconfig": "*",
-        "@types/node": "^20.5.7",
-        "@types/react": "^18.2.43",
-        "@types/react-dom": "^18.0.7",
-        "@types/react-no-ssr": "^1.1.3",
-        "esbuild-jest": "^0.5.0"
-    }
+        "@changesets/cli": "^2.27.1",
+        "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+        "@turbo/gen": "^1.10.12",
+        "eslint-config-custom": "*",
+        "husky": "^8.0.0",
+        "prettier": "^3.1.1",
+        "turbo": "^1.11.3"
+    },
+    "name": "orchestrator-core-ui",
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ]
 }

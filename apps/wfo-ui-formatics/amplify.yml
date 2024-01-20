@@ -8,7 +8,6 @@ applications:
         build:
           commands:
             - env | grep -e AUTH_ACTIVE -e NEXTAUTH_ID -e NEXTAUTH_CLIENT_ID -e NEXTAUTH_CLIENT_SECRET -e NEXTAUTH_SECRET -e NEXTAUTH_ISSUER -e NEXTAUTH_URL -e ORCHESTRATOR_API_HOST -e ORCHESTRATOR_API_PATH -e ORCHESTRATOR_GRAPHQL_HOST -e ORCHESTRATOR_GRAPHQL_PATH -e PROCESS_DETAIL_REFETCH_INTERVAL >> apps/wfo-ui-formatics/.env.production
-            - env | grep -e NEXT_PUBLIC_ >> apps/wfo-ui-formatics/.env.production
             - npx turbo run build --filter=wfo-ui-formatics
       artifacts:
         baseDirectory: apps/wfo-ui-formatics/.next

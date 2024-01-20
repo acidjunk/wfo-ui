@@ -18,22 +18,24 @@ rm -f package.json
 rm -f turbo.json
 rm -f yarn.lock
 
-git clone git@github.com:workfloworchestrator/orchestrator-ui-library.git /tmp/gui
+git clone git@github.com:workfloworchestrator/orchestrator-ui-library.git /tmp/wfo
 
 # copy folder
 cp -r /tmp/gui/.husky .
+echo "Copying apps"
 cp -r /tmp/gui/apps/wfo-ui apps/
 cp -r /tmp/gui/apps/wfo-ui-surf apps/
+echo "Copying packages and docs"
 cp -r /tmp/wfo/packages .
 cp -r /tmp/wfo/mkdocs .
 
 # copy root files
-cp -r /tmp/gui/.editorconfig .
-cp -r /tmp/gui/.eslintrc.js .
-cp -r /tmp/gui/.gitignore .
-cp -r /tmp/gui/.npmrc
-cp -r /tmp/gui/.prettierignore
-cp -r /tmp/gui/.prettierrc
-cp -r /tmp/gui/package.json
-cp -r /tmp/gui/turbo.json .
-cp -r /tmp/gui/yarn.lock .
+cp -v /tmp/gui/.editorconfig .
+cp -v /tmp/gui/.eslintrc.js .
+cp -v /tmp/gui/.gitignore .
+cp -v /tmp/gui/.npmrc .
+cp -v /tmp/gui/.prettierignore .
+cp -v /tmp/gui/.prettierrc .
+cp -v /tmp/gui/package.json .
+cp -v /tmp/gui/turbo.json .
+cp -v /tmp/gui/yarn.lock .

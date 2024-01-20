@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import NoSSR from 'react-no-ssr';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
@@ -10,7 +10,8 @@ import App, { AppContext, AppInitialProps, AppProps } from 'next/app';
 import Head from 'next/head';
 import { QueryParamProvider } from 'use-query-params';
 
-import {EuiProvider, EuiThemeColorMode} from '@elastic/eui';
+import { EuiProvider } from '@elastic/eui';
+import '@elastic/eui/dist/eui_theme_dark.min.css';
 import {
     ApiClientContextProvider,
     ConfirmationDialogContextWrapper,
@@ -24,15 +25,18 @@ import {
 
 import { getAppLogo } from '@/components/AppLogo/AppLogo';
 import { getInitialOrchestratorConfig } from '@/configuration';
+import { defaultOrchestratorTheme } from '@/theme/defaultOrchestratorTheme';
+import '@/theme/theme.css';
 import { TranslationsProvider } from '@/translations/translationsProvider';
-import {defaultOrchestratorTheme} from "@/theme/defaultOrchestratorTheme";
+
+import '../font/inter.css';
 
 type AppOwnProps = { orchestratorConfig: OrchestratorConfig };
 
 const queryClientConfig: QueryClientConfig = {
     defaultOptions: {
         queries: {
-            cacheTime: 60 * 60 * 1000,
+            cacheTime: 5 * 1000,
             refetchOnWindowFocus: true,
             keepPreviousData: true,
         },
@@ -45,44 +49,6 @@ function CustomApp({
     orchestratorConfig,
 }: AppProps & AppOwnProps) {
     const [queryClient] = useState(() => new QueryClient(queryClientConfig));
-    const [themeMode, setThemeMode] = useState<EuiThemeColorMode>('light');
-
-    const handleThemeSwitch = (newThemeMode: EuiThemeColorMode) => {
-        setThemeMode(newThemeMode);
-        localStorage.setItem('themeMode', newThemeMode);
-    };
-
-    useEffect(() => {
-        // Initialize theme mode from localStorage or set it to 'light' if not present
-        if (!localStorage.getItem('themeMode')) {
-            handleThemeSwitch('light');
-        }
-    }, []);
-
-    // const getMenuItems = (
-    //     defaultMenuItems: EuiSideNavItemType<object>[]
-    // ): EuiSideNavItemType<object>[] => {
-    //     const updatedMenuItems = defaultMenuItems.map(item => {
-    //         if (item.id === '4') {
-    //             return {
-    //                 name: 'Emails',
-    //                 id: '4',
-    //                 isSelected: router.pathname === PATH_SUBSCRIPTIONS,
-    //                 href: PATH_SUBSCRIPTIONS,
-    //                 onClick: (e: { preventDefault: () => void; }) => {
-    //                     e.preventDefault();
-    //                     router.push(PATH_SUBSCRIPTIONS);
-    //                 },
-    //             };
-    //         } else {
-    //             return item; // Keep the other items unchanged
-    //         }
-    //     });
-    //
-    //     return updatedMenuItems;
-    // };
-    //
-
 
     return (
         <OrchestratorConfigProvider
@@ -92,7 +58,7 @@ function CustomApp({
                 <WfoAuth>
                     <NoSSR>
                         <EuiProvider
-                            colorMode={themeMode}
+                            colorMode="dark"
                             modify={defaultOrchestratorTheme}
                         >
                             <ApiClientContextProvider>
@@ -103,24 +69,16 @@ function CustomApp({
                                     <TranslationsProvider>
                                         <Head>
                                             <link
-                                                rel="stylesheet"
-                                                href={`/styles/eui_theme_${themeMode}.min.css`}
+                                                rel="icon"
+                                                href="/favicon.png"
                                             />
-                                            <title>
-                                                Email workflows
-                                            </title>
+                                            <title>Workflow Orchestrator</title>
                                         </Head>
                                         <main className="app">
                                             <ToastsContextProvider>
                                                 <ConfirmationDialogContextWrapper>
                                                     <WfoPageTemplate
                                                         getAppLogo={getAppLogo}
-                                                        // overrideMenuItems={
-                                                        //     getMenuItems
-                                                        // }
-                                                        themeSwitch={
-                                                            handleThemeSwitch
-                                                        }
                                                     >
                                                         <QueryParamProvider
                                                             adapter={

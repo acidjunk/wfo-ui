@@ -54,7 +54,7 @@ export const defaultOrchestratorTheme: EuiThemeModifications = {
             successText: '#7DDEd8',
             warningText: '#F3D371',
             dangerText: '#F86B63',
-            emptyShade: '#1D1E24',
+            emptyShade: '#211717',
             lightestShade: '#25262E',
             lightShade: '#343741',
             mediumShade: '#535966',
@@ -70,7 +70,7 @@ export const defaultOrchestratorTheme: EuiThemeModifications = {
             disabled: '#515761',
             disabledText: '#515761',
             shadow: '#000000',
-        }
+        },
     },
     font: {
         weight: {

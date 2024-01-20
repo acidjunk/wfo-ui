@@ -3,7 +3,8 @@ wfo-ui
 
 `wfo-ui-formatics` Contains an implementation of the reference app for [orchestrator-ui](https://github.com/workfloworchestrator/orchestrator-ui/)
 
-You can run it as a standalone project, or clone it as asubmodule inside the apps folder of the monorepo.
+You can run it as a standalone project, but to make a build you need to use the mono repo setup for now.
+There is a sync.sh file that tries to acquire a new version of the lib and re-apply it.
 
 ```bash
 yarn
